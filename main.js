@@ -100,7 +100,7 @@ submitButton.addEventListener("click", () => {
 
     clicked = false;
   } else {
-    displayArea.innerText = "Wrong";
+    displayArea.innerText = "Incorrect";
 
     clicked = false;
   }
