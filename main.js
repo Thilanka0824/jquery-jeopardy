@@ -28,24 +28,17 @@ let displayScore = document.querySelector("#score");
 
 let scoreKeeper = 0;
 
-let questionObject1 = {answer: ''};
-let questionObject2 = {answer: ''};
-let questionObject4 = {answer: ''};
-let questionObject6 = {answer: ''};
-let questionObject8 = {answer: ''};
+let questionObject1 = { answer: "" };
+let questionObject2 = { answer: "" };
+let questionObject4 = { answer: "" };
+let questionObject6 = { answer: "" };
+let questionObject8 = { answer: "" };
 
 let clicked = false;
-
-let resetAll = () => {
-  inputBox.value = "";
-  displayArea.innerText = "";
-};
-
 
 let clear = () => {
   inputBox.value = "";
   displayArea.innerText = "";
-
 };
 
 displayScore.innerText = `Your Score: $${scoreKeeper}`;
@@ -61,10 +54,7 @@ submitButton.addEventListener("click", () => {
     displayArea.innerText = "Good Job";
 
     clicked = false;
-  }  
-  
-  
-
+  }
 
   // $200
   else if (
@@ -77,8 +67,6 @@ submitButton.addEventListener("click", () => {
 
     clicked = false;
   }
-  
-  
 
   // $400
   else if (
@@ -91,8 +79,6 @@ submitButton.addEventListener("click", () => {
     clicked = false;
   }
 
-  
-
   // $600
   else if (
     inputBox.value.toLowerCase() === questionObject6.answer.toLowerCase()
@@ -104,8 +90,6 @@ submitButton.addEventListener("click", () => {
     clicked = false;
   }
 
-
-
   // $800
   else if (
     inputBox.value.toLowerCase() === questionObject8.answer.toLowerCase()
@@ -115,9 +99,11 @@ submitButton.addEventListener("click", () => {
     displayArea.innerText = "OUTSTANDING!!!!!";
 
     clicked = false;
-  }
+  } else {
+    displayArea.innerText = "Wrong";
 
-  
+    clicked = false;
+  }
 
   setTimeout(clear, 2500);
 });
@@ -165,6 +151,7 @@ let forLoops = async () => {
 
         questionObject2 = dataStream.$200[randomNumber2];
         console.log(questionObject2);
+        displayArea.innerText = questionObject2.question;
       }
     };
     button200.addEventListener("click", removeListener2);
