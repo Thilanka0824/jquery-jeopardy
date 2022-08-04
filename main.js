@@ -4,11 +4,6 @@ let readJeopardyData = async () => {
   //console.log(data);
 
   let groupedData = _.groupBy(data, "value");
-  //console.log(groupedData.$100);
-  // console.log(groupedData.$200);
-  // console.log(groupedData.$400);
-  // console.log(groupedData.$600);
-  // console.log(groupedData.$800);
 
   return groupedData;
   //console.log(groupedData)
@@ -47,29 +42,6 @@ displayScore.innerText = `Your Score: $${scoreKeeper}`;
 
 // submit button EVENT LISTENER
 submitButton.addEventListener("click", () => {
-  //console.log('yo yo')
-  
-  // if (inputBox.value !== questionObject1.answer){
-  //   displayArea.innerText = 'nope 1'
-    
-  // }
-
-  // else if (inputBox.value !== questionObject2.answer){
-  //   displayArea.innerText = 'nope 2'
-
-  // }
-
-  // else if (inputBox.value !== questionObject4.answer){
-  //   displayArea.innerText = 'nope 3'
-  // }
-
-  // else if (inputBox.value !== questionObject6.answer){
-  //   displayArea.innerText = 'nope 4'
-  // }
-
-  // else if (inputBox.value !== questionObject8.answer){
-  //   displayArea.innerText = 'nope 5'
-  // }
 
 
   // $100
@@ -78,45 +50,42 @@ submitButton.addEventListener("click", () => {
     scoreKeeper = scoreKeeper + 100;
     console.log(scoreKeeper);
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
-    displayArea.innerText = "Good Job!";
+    displayArea.innerText = "Good Job";
     
 
   }
 
   // $200
   else if (inputBox.value === questionObject2.answer) {
-    //console.log('yes!')
+    
     scoreKeeper = scoreKeeper + 200;
     console.log(scoreKeeper);
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
-    displayArea.innerText = "Great Answer";
+    displayArea.innerText = "Great Answer!";
   }
 
   // $400
   else if (inputBox.value === questionObject4.answer) {
-    //console.log('yes!')
+    
     scoreKeeper = scoreKeeper + 400;
-    //console.log(scoreKeeper)
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
-    displayArea.innerText = "Way to go!";
+    displayArea.innerText = "Way to go!!";
   }
 
   // $600
-  else if (inputBox.value === questionObject6.answer) {
-    //console.log('yes!')
+  else if (inputBox.value=== questionObject6.answer) {
+    
     scoreKeeper = scoreKeeper + 600;
-    //console.log(scoreKeeper)
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
-    displayArea.innerText = "That was a tough one!!";
+    displayArea.innerText = "That was a tough one!!!";
   }
 
   // $800
   else if (inputBox.value === questionObject8.answer) {
-    //console.log('yes!')
+    
     scoreKeeper = scoreKeeper + 800;
-    //console.log(scoreKeeper)
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
-    displayArea.innerText = "OUTSTANDING!!!";
+    displayArea.innerText = "OUTSTANDING!!!!!";
   }
   // ANYTHING OTHER THAN THE ANSWER
   else {
@@ -125,17 +94,13 @@ submitButton.addEventListener("click", () => {
 
   }
 
-  setTimeout(clear, 3000)
-  //clear();
-  // inputBox.value = ''
-  // displayArea.innerText = ''
+  setTimeout(clear, 2000)
+  
 });
 
 // Loops for BUTTONS
 let forLoops = async () => {
   let dataStream = await readJeopardyData(); //dataStream is the parsed JSON data from readJeopardyData
-
-  //let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length); //
 
   // $100
   for (let i = 0; i < buttonList100.length; i++) {
@@ -152,14 +117,12 @@ let forLoops = async () => {
       displayArea.innerText = questionObject1.question;
       //console.log(button100.classList);
       console.log(button100.id);
-      //console.log(questionObject.question);
-      //console.log(typeof blackout)
-      //blackout.style.opacity = '0.3'
-      //console.log(dataStream[3]);
+     
     };
 
     button100.addEventListener("click", removeListener);
   }
+  
   // $200
   for (let i = 0; i < buttonList200.length; i++) {
     let button200 = buttonList200[i];
@@ -174,9 +137,7 @@ let forLoops = async () => {
       console.log(questionObject2);
       displayArea.innerText = questionObject2.question;
 
-      //console.log(dataStream);
-      //console.log(button200.classList)
-      //console.log(button200.id)
+      
     };
     button200.addEventListener("click", removeListener2);
   }
@@ -195,8 +156,7 @@ let forLoops = async () => {
       console.log(questionObject4);
       displayArea.innerText = questionObject4.question;
 
-      //   console.log(button400.classList);
-      //   console.log(button400.id);
+    
     };
     button400.addEventListener("click", removeListener4);
   }

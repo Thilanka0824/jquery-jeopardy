@@ -9,12 +9,22 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        box-shadow: 0 3px 10px rgb(0 0 0 / 0.3);
+        
         
         
 
         
 }
 
+#submit-button 
+{
+
+    grid-area: b1-100;
+    
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
+
+}
 
 #jeopardy 
 {
@@ -63,103 +73,128 @@
 #b1-100{
     grid-area: b1-100;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 
     
 }
 #b2-100{
     grid-area: b2-100;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b3-100
 {
     grid-area: b3-100;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b4-100{
     grid-area: b4-100;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b5-100{
     grid-area: b5-100;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b1-200{
     grid-area: b1-200;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b2-200{
     grid-area: b2-200;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b3-200{
     grid-area: b3-200;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b4-200{
     grid-area: b4-200;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b5-200{
     grid-area: b5-200;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b1-400{
     grid-area: b1-400;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b2-400{
     grid-area: b2-400;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b3-400{
     grid-area: b3-400;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b4-400{
     grid-area: b4-400;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b5-400{
     grid-area: b5-400;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b1-600{
     grid-area: b1-600;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b2-600{
     grid-area: b2-600;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b3-600{
     grid-area: b3-600;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b4-600{
     grid-area: b4-600;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b5-600{
     grid-area: b5-600;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b1-800{
     grid-area: b1-800;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b2-800{
     grid-area: b2-800;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b3-800{
     grid-area: b3-800;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b4-800{
     grid-area: b4-800;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
 #b5-800{
     grid-area: b5-800;
     margin: 7%;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.6);
 }
