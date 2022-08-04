@@ -1,171 +1,239 @@
 let readJeopardyData = async () => {
-    let rawJeopardyData = await fetch('jeopardy.json');
-    let data = await rawJeopardyData.json();
-    //console.log(data);
+  let rawJeopardyData = await fetch("jeopardy.json");
+  let data = await rawJeopardyData.json();
+  //console.log(data);
 
-    let groupedData = _.groupBy(data, 'value')
-     console.log(groupedData.$100);
-    // console.log(groupedData.$200);
-    // console.log(groupedData.$400);
-    // console.log(groupedData.$600);
-    // console.log(groupedData.$800);
-   
-    return groupedData
-    //console.log(groupedData)
-}
+  let groupedData = _.groupBy(data, "value");
+  //console.log(groupedData.$100);
+  // console.log(groupedData.$200);
+  // console.log(groupedData.$400);
+  // console.log(groupedData.$600);
+  // console.log(groupedData.$800);
+
+  return groupedData;
+  //console.log(groupedData)
+};
 
 //readJeopardyData()
 
+let gridDiv = document.querySelector("#jeopardy");
 
-let gridDiv = document.querySelector('#jeopardy')
+let buttonList100 = document.querySelectorAll(".btn.btn-100");
+let buttonList200 = document.querySelectorAll(".btn.btn-200");
+let buttonList400 = document.querySelectorAll(".btn.btn-400");
+let buttonList600 = document.querySelectorAll(".btn.btn-600");
+let buttonList800 = document.querySelectorAll(".btn.btn-800");
 
-let buttonList100 = document.querySelectorAll('.btn.btn-100')
-let buttonList200 = document.querySelectorAll('.btn.btn-200')
-let buttonList400 = document.querySelectorAll('.btn.btn-400')
-let buttonList600 = document.querySelectorAll('.btn.btn-600')
-let buttonList800 = document.querySelectorAll('.btn.btn-800')
+let displayArea = document.querySelector("#display-area");
 
-let displayArea = document.querySelector('#display-area')
+let inputBox = document.querySelector("#input-box");
+let submitButton = document.querySelector("#submit-button");
+let displayScore = document.querySelector("#score");
 
-let inputBox = document.querySelector('#input-box')
-let submitButton = document.querySelector('#submit-button')
+let scoreKeeper = 0;
 
-let questionObject1 = {}
-let questionObject2 = {}
-let questionObject4 = {}
-let questionObject6 = {}
-let questionObject8 = {}
+let questionObject1 = {};
+let questionObject2 = {};
+let questionObject4 = {};
+let questionObject6 = {};
+let questionObject8 = {};
+
+let clear = () => {
+  inputBox.value = "";
+  displayArea.innerText = "";
+};
+
+displayScore.innerText = `Your Score: $${scoreKeeper}`;
 
 // submit button EVENT LISTENER
-submitButton.addEventListener('click', () => {
-    //console.log('yo yo')
-    // $100
-    if(inputBox.value === questionObject1.answer){
-        console.log('yes!')
-    } else if(inputBox.value !== questionObject1.answer){
-        console.log('WRONG!')
-    }
+submitButton.addEventListener("click", () => {
+  //console.log('yo yo')
+  
+  // if (inputBox.value !== questionObject1.answer){
+  //   displayArea.innerText = 'nope 1'
     
-    // $200
-    else if(inputBox.value === questionObject2.answer){
-        console.log('yes!')
-        
-    } else if(inputBox.value !== questionObject2.answer){
-        console.log('WRONG!')
-    }
+  // }
 
-    // $400
-    else if(inputBox.value === questionObject4.answer){
-        console.log('yes!')
-    } else if(inputBox.value !== questionObject4.answer){
-        console.log('WRONG!')
-    }
+  // else if (inputBox.value !== questionObject2.answer){
+  //   displayArea.innerText = 'nope 2'
 
-    // $600
-    else if(inputBox.value === questionObject6.answer){
-        console.log('yes!')
-    } else if(inputBox.value !== questionObject6.answer){
-        console.log('WRONG!')
-    }
+  // }
 
-    // $800
-    else if(inputBox.value === questionObject8.answer){
-        console.log('yes!')
-    } else if(inputBox.value !== questionObject8.answer){
-        console.log('WRONG!')
-    }
-})
+  // else if (inputBox.value !== questionObject4.answer){
+  //   displayArea.innerText = 'nope 3'
+  // }
+
+  // else if (inputBox.value !== questionObject6.answer){
+  //   displayArea.innerText = 'nope 4'
+  // }
+
+  // else if (inputBox.value !== questionObject8.answer){
+  //   displayArea.innerText = 'nope 5'
+  // }
 
 
+  // $100
+  if (inputBox.value === questionObject1.answer) {
+    //console.log('yes!')
+    scoreKeeper = scoreKeeper + 100;
+    console.log(scoreKeeper);
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "Good Job!";
+    
 
+  }
 
+  // $200
+  else if (inputBox.value === questionObject2.answer) {
+    //console.log('yes!')
+    scoreKeeper = scoreKeeper + 200;
+    console.log(scoreKeeper);
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "Great Answer";
+  }
 
+  // $400
+  else if (inputBox.value === questionObject4.answer) {
+    //console.log('yes!')
+    scoreKeeper = scoreKeeper + 400;
+    //console.log(scoreKeeper)
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "Way to go!";
+  }
+
+  // $600
+  else if (inputBox.value === questionObject6.answer) {
+    //console.log('yes!')
+    scoreKeeper = scoreKeeper + 600;
+    //console.log(scoreKeeper)
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "That was a tough one!!";
+  }
+
+  // $800
+  else if (inputBox.value === questionObject8.answer) {
+    //console.log('yes!')
+    scoreKeeper = scoreKeeper + 800;
+    //console.log(scoreKeeper)
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "OUTSTANDING!!!";
+  }
+  // ANYTHING OTHER THAN THE ANSWER
+  else {
+    //console.log('WRONG!')
+    displayArea.innerText = "WRONG!";
+
+  }
+
+  setTimeout(clear, 3000)
+  //clear();
+  // inputBox.value = ''
+  // displayArea.innerText = ''
+});
+
+// Loops for BUTTONS
 let forLoops = async () => {
-  let dataStream = await readJeopardyData();
+  let dataStream = await readJeopardyData(); //dataStream is the parsed JSON data from readJeopardyData
 
-    let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length);
+  //let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length); //
 
-    let randomNumber2 = Math.ceil(Math.random() * dataStream.$200.length);
-    let randomNumber4 = Math.ceil(Math.random() * dataStream.$400.length);
-    let randomNumber6 = Math.ceil(Math.random() * dataStream.$600.length);
-    let randomNumber8 = Math.ceil(Math.random() * dataStream.$800.length);
-
+  // $100
   for (let i = 0; i < buttonList100.length; i++) {
     let button100 = buttonList100[i];
 
-    questionObject1 = dataStream.$100[randomNumber1]
+    let removeListener = ({ target }) => {
+      target.removeEventListener("click", removeListener);
+      target.style.opacity = "0.2";
+      //let blackout = button100.id
+      let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length);
 
-    button100.addEventListener("click", () => {
-        console.log(questionObject1)
-        displayArea.innerText = questionObject1.question
-        //console.log(button100.classList);
-      //console.log(button100.id);
+      questionObject1 = dataStream.$100[randomNumber1];
+      console.log(questionObject1);
+      displayArea.innerText = questionObject1.question;
+      //console.log(button100.classList);
+      console.log(button100.id);
       //console.log(questionObject.question);
-      
+      //console.log(typeof blackout)
+      //blackout.style.opacity = '0.3'
       //console.log(dataStream[3]);
-      
-    });
+    };
 
-    
+    button100.addEventListener("click", removeListener);
   }
-  
-  
   // $200
   for (let i = 0; i < buttonList200.length; i++) {
-        let button200 = buttonList200[i];
+    let button200 = buttonList200[i];
 
-        questionObject2 = dataStream.$200[randomNumber2]
+    let removeListener2 = ({ target }) => {
+      target.removeEventListener("click", removeListener2);
+      target.style.opacity = "0.2";
 
-    button200.addEventListener("click", () => {
-        console.log(questionObject2)
-        displayArea.innerText = questionObject2.question
-      
-        //console.log(dataStream);
+      let randomNumber2 = Math.ceil(Math.random() * dataStream.$200.length);
+
+      questionObject2 = dataStream.$200[randomNumber2];
+      console.log(questionObject2);
+      displayArea.innerText = questionObject2.question;
+
+      //console.log(dataStream);
       //console.log(button200.classList)
       //console.log(button200.id)
-    });
+    };
+    button200.addEventListener("click", removeListener2);
   }
-  
+
   // $400
   for (let i = 0; i < buttonList400.length; i++) {
     let button400 = buttonList400[i];
 
-    questionObject4 = dataStream.$400[randomNumber4]
-    
-    button400.addEventListener("click", () => {
-        console.log(questionObject4)
-        displayArea.innerText = questionObject4.question
-    
-        //   console.log(button400.classList);
-    //   console.log(button400.id);
-    });
+    let removeListener4 = ({ target }) => {
+      target.removeEventListener("click", removeListener4);
+      target.style.opacity = "0.2";
+
+      let randomNumber4 = Math.ceil(Math.random() * dataStream.$400.length);
+
+      questionObject4 = dataStream.$400[randomNumber4];
+      console.log(questionObject4);
+      displayArea.innerText = questionObject4.question;
+
+      //   console.log(button400.classList);
+      //   console.log(button400.id);
+    };
+    button400.addEventListener("click", removeListener4);
   }
 
   // $600
   for (let i = 0; i < buttonList600.length; i++) {
     let button600 = buttonList600[i];
 
-    questionObject6 = dataStream.$600[randomNumber6]
+    let removeListener6 = ({ target }) => {
+      target.removeEventListener("click", removeListener6);
+      target.style.opacity = "0.2";
 
-    button600.addEventListener("click", () => {
-        console.log(questionObject6)
-        displayArea.innerText = questionObject6.question
-    
-   
-    });
+      let randomNumber6 = Math.ceil(Math.random() * dataStream.$600.length);
+      questionObject6 = dataStream.$600[randomNumber6];
+
+      console.log(questionObject6);
+      displayArea.innerText = questionObject6.question;
+    };
+    button600.addEventListener("click", removeListener6);
   }
 
+  // $800
   for (let i = 0; i < buttonList800.length; i++) {
     let button800 = buttonList800[i];
 
-    questionObject8 = dataStream.$800[randomNumber8]
+    let removeListener8 = ({ target }) => {
+      target.removeEventListener("click", removeListener8);
+      target.style.opacity = "0.2";
 
-    button800.addEventListener("click", () => {
-        console.log(questionObject8)
-        displayArea.innerText = questionObject8.question
-    });
+      let randomNumber8 = Math.ceil(Math.random() * dataStream.$800.length);
+      questionObject8 = dataStream.$800[randomNumber8];
+
+      console.log(questionObject8);
+      displayArea.innerText = questionObject8.question;
+    };
+    button800.addEventListener("click", removeListener8);
   }
 };
 
-
-forLoops()
+forLoops();
