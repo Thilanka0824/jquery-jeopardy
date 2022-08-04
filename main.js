@@ -12,6 +12,7 @@ let readJeopardyData = async () => {
 //readJeopardyData()
 
 let gridDiv = document.querySelector("#jeopardy");
+let reset = document.querySelector("#header");
 
 let buttonList100 = document.querySelectorAll(".btn.btn-100");
 let buttonList200 = document.querySelectorAll(".btn.btn-200");
@@ -27,11 +28,19 @@ let displayScore = document.querySelector("#score");
 
 let scoreKeeper = 0;
 
-let questionObject1 = {};
-let questionObject2 = {};
-let questionObject4 = {};
-let questionObject6 = {};
-let questionObject8 = {};
+let questionObject1 = {answer: ''};
+let questionObject2 = {answer: ''};
+let questionObject4 = {answer: ''};
+let questionObject6 = {answer: ''};
+let questionObject8 = {answer: ''};
+
+let clicked = false;
+
+let resetAll = () => {
+  inputBox.value = "";
+  displayArea.innerText = "";
+};
+
 
 let clear = () => {
   inputBox.value = "";
@@ -42,60 +51,68 @@ displayScore.innerText = `Your Score: $${scoreKeeper}`;
 
 // submit button EVENT LISTENER
 submitButton.addEventListener("click", () => {
-
-
   // $100
-  if (inputBox.value === questionObject1.answer) {
+  if (inputBox.value.toLowerCase() === questionObject1.answer.toLowerCase()) {
     //console.log('yes!')
     scoreKeeper = scoreKeeper + 100;
     console.log(scoreKeeper);
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "Good Job";
-    
 
+    clicked = false;
   }
 
   // $200
-  else if (inputBox.value === questionObject2.answer) {
-    
+  else if (
+    inputBox.value.toLowerCase() === questionObject2.answer.toLowerCase()
+  ) {
     scoreKeeper = scoreKeeper + 200;
     console.log(scoreKeeper);
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "Great Answer!";
+
+    clicked = false;
   }
 
   // $400
-  else if (inputBox.value === questionObject4.answer) {
-    
+  else if (
+    inputBox.value.toLowerCase() === questionObject4.answer.toLowerCase()
+  ) {
     scoreKeeper = scoreKeeper + 400;
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "Way to go!!";
+
+    clicked = false;
   }
 
   // $600
-  else if (inputBox.value=== questionObject6.answer) {
-    
+  else if (
+    inputBox.value.toLowerCase() === questionObject6.answer.toLowerCase()
+  ) {
     scoreKeeper = scoreKeeper + 600;
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "That was a tough one!!!";
+
+    clicked = false;
   }
 
   // $800
-  else if (inputBox.value === questionObject8.answer) {
-    
+  else if (
+    inputBox.value.toLowerCase() === questionObject8.answer.toLowerCase()
+  ) {
     scoreKeeper = scoreKeeper + 800;
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "OUTSTANDING!!!!!";
+
+    clicked = false;
   }
   // ANYTHING OTHER THAN THE ANSWER
   else {
     //console.log('WRONG!')
     displayArea.innerText = "WRONG!";
-
   }
 
-  setTimeout(clear, 2000)
-  
+  setTimeout(clear, 2000);
 });
 
 // Loops for BUTTONS
@@ -107,37 +124,41 @@ let forLoops = async () => {
     let button100 = buttonList100[i];
 
     let removeListener = ({ target }) => {
-      target.removeEventListener("click", removeListener);
-      target.style.opacity = "0.2";
-      //let blackout = button100.id
-      let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length);
+      if (clicked === false) {
+        clicked = true;
 
-      questionObject1 = dataStream.$100[randomNumber1];
-      console.log(questionObject1);
-      displayArea.innerText = questionObject1.question;
-      //console.log(button100.classList);
-      console.log(button100.id);
-     
+        target.removeEventListener("click", removeListener);
+        target.style.opacity = "0.2";
+        //let blackout = button100.id
+        let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length);
+
+        questionObject1 = dataStream.$100[randomNumber1];
+        console.log(questionObject1);
+        displayArea.innerText = questionObject1.question;
+        //console.log(button100.classList);
+
+        console.log(button100.id);
+      }
     };
-
     button100.addEventListener("click", removeListener);
   }
-  
+
   // $200
   for (let i = 0; i < buttonList200.length; i++) {
     let button200 = buttonList200[i];
 
     let removeListener2 = ({ target }) => {
-      target.removeEventListener("click", removeListener2);
-      target.style.opacity = "0.2";
+      if (clicked === false) {
+        clicked = true;
 
-      let randomNumber2 = Math.ceil(Math.random() * dataStream.$200.length);
+        target.removeEventListener("click", removeListener2);
+        target.style.opacity = "0.2";
 
-      questionObject2 = dataStream.$200[randomNumber2];
-      console.log(questionObject2);
-      displayArea.innerText = questionObject2.question;
+        let randomNumber2 = Math.ceil(Math.random() * dataStream.$200.length);
 
-      
+        questionObject2 = dataStream.$200[randomNumber2];
+        console.log(questionObject2);
+      }
     };
     button200.addEventListener("click", removeListener2);
   }
@@ -147,16 +168,18 @@ let forLoops = async () => {
     let button400 = buttonList400[i];
 
     let removeListener4 = ({ target }) => {
-      target.removeEventListener("click", removeListener4);
-      target.style.opacity = "0.2";
+      if (clicked === false) {
+        clicked = true;
 
-      let randomNumber4 = Math.ceil(Math.random() * dataStream.$400.length);
+        target.removeEventListener("click", removeListener4);
+        target.style.opacity = "0.2";
 
-      questionObject4 = dataStream.$400[randomNumber4];
-      console.log(questionObject4);
-      displayArea.innerText = questionObject4.question;
+        let randomNumber4 = Math.ceil(Math.random() * dataStream.$400.length);
 
-    
+        questionObject4 = dataStream.$400[randomNumber4];
+        console.log(questionObject4);
+        displayArea.innerText = questionObject4.question;
+      }
     };
     button400.addEventListener("click", removeListener4);
   }
@@ -166,14 +189,18 @@ let forLoops = async () => {
     let button600 = buttonList600[i];
 
     let removeListener6 = ({ target }) => {
-      target.removeEventListener("click", removeListener6);
-      target.style.opacity = "0.2";
+      if (clicked === false) {
+        clicked = true;
 
-      let randomNumber6 = Math.ceil(Math.random() * dataStream.$600.length);
-      questionObject6 = dataStream.$600[randomNumber6];
+        target.removeEventListener("click", removeListener6);
+        target.style.opacity = "0.2";
 
-      console.log(questionObject6);
-      displayArea.innerText = questionObject6.question;
+        let randomNumber6 = Math.ceil(Math.random() * dataStream.$600.length);
+        questionObject6 = dataStream.$600[randomNumber6];
+
+        console.log(questionObject6);
+        displayArea.innerText = questionObject6.question;
+      }
     };
     button600.addEventListener("click", removeListener6);
   }
@@ -183,14 +210,18 @@ let forLoops = async () => {
     let button800 = buttonList800[i];
 
     let removeListener8 = ({ target }) => {
-      target.removeEventListener("click", removeListener8);
-      target.style.opacity = "0.2";
+      if (clicked === false) {
+        clicked = true;
 
-      let randomNumber8 = Math.ceil(Math.random() * dataStream.$800.length);
-      questionObject8 = dataStream.$800[randomNumber8];
+        target.removeEventListener("click", removeListener8);
+        target.style.opacity = "0.2";
 
-      console.log(questionObject8);
-      displayArea.innerText = questionObject8.question;
+        let randomNumber8 = Math.ceil(Math.random() * dataStream.$800.length);
+        questionObject8 = dataStream.$800[randomNumber8];
+
+        console.log(questionObject8);
+        displayArea.innerText = questionObject8.question;
+      }
     };
     button800.addEventListener("click", removeListener8);
   }
