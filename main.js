@@ -2,6 +2,7 @@ let readJeopardyData = async () => {
   let rawJeopardyData = await fetch("jeopardy.json");
   let data = await rawJeopardyData.json();
   //console.log(data);
+
   let groupedData = _.groupBy(data, "value");
 
   return groupedData;
@@ -27,11 +28,11 @@ let displayScore = document.querySelector("#score");
 
 let scoreKeeper = 0;
 
-let questionObject1 = { answer: "" };
-let questionObject2 = { answer: "" };
-let questionObject4 = { answer: "" };
-let questionObject6 = { answer: "" };
-let questionObject8 = { answer: "" };
+let questionObject1 = {answer: ''};
+let questionObject2 = {answer: ''};
+let questionObject4 = {answer: ''};
+let questionObject6 = {answer: ''};
+let questionObject8 = {answer: ''};
 
 let clicked = false;
 
@@ -40,26 +41,11 @@ let resetAll = () => {
   displayArea.innerText = "";
 };
 
+
 let clear = () => {
   inputBox.value = "";
   displayArea.innerText = "";
-  questionObject1 = { answer: "" };
-  questionObject2 = { answer: "" };
-  questionObject4 = { answer: "" };
-  questionObject6 = { answer: "" };
-  questionObject8 = { answer: "" };
-};
 
-let rightAnswer = () => {
-  displayScore.innerText = `Your Score: $${scoreKeeper}`;
-  displayArea.innerText = "Good Job";
-  clicked = false;
-};
-
-let wrongAnswer = () => {
-  displayScore.innerText = `Your Score: $${scoreKeeper}`;
-  displayArea.innerText = `Answer: ${questionObject1.answer}`;
-  clicked = false;
 };
 
 displayScore.innerText = `Your Score: $${scoreKeeper}`;
@@ -70,67 +56,70 @@ submitButton.addEventListener("click", () => {
   if (inputBox.value.toLowerCase() === questionObject1.answer.toLowerCase()) {
     //console.log('yes!')
     scoreKeeper = scoreKeeper + 100;
-    rightAnswer();
-  } else if (
-    inputBox.value.toLowerCase() !== questionObject1.answer.toLowerCase()
-  ) {
-    scoreKeeper = scoreKeeper - 100;
-    wrongAnswer();
-  }
+    console.log(scoreKeeper);
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "Good Job";
+
+    clicked = false;
+  }  
+  
+  
+
 
   // $200
   else if (
     inputBox.value.toLowerCase() === questionObject2.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 200;
-    rightAnswer();
-  } else if (
-    inputBox.value.toLowerCase() !== questionObject2.answer.toLowerCase()
-  ) {
-    scoreKeeper = scoreKeeper - 200;
-    wrongAnswer();
+    console.log(scoreKeeper);
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "Great Answer!";
+
+    clicked = false;
   }
+  
+  
 
   // $400
   else if (
     inputBox.value.toLowerCase() === questionObject4.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 400;
-    rightAnswer();
-  } else if (
-    inputBox.value.toLowerCase() !== questionObject4.answer.toLowerCase()
-  ) {
-    scoreKeeper = scoreKeeper - 400;
-    wrongAnswer();
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "Way to go!!";
+
+    clicked = false;
   }
+
+  
 
   // $600
   else if (
     inputBox.value.toLowerCase() === questionObject6.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 600;
-    rightAnswer();
-  } else if (
-    inputBox.value.toLowerCase() !== questionObject4.answer.toLowerCase()
-  ) {
-    scoreKeeper = scoreKeeper - 600;
-    wrongAnswer();
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "That was a tough one!!!";
+
+    clicked = false;
   }
+
+
 
   // $800
   else if (
     inputBox.value.toLowerCase() === questionObject8.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 800;
-    rightAnswer();
-  } else if (
-    inputBox.value.toLowerCase() !== questionObject4.answer.toLowerCase()
-  ) {
-    scoreKeeper = scoreKeeper - 800;
-    wrongAnswer();
+    displayScore.innerText = `Your Score: $${scoreKeeper}`;
+    displayArea.innerText = "OUTSTANDING!!!!!";
+
+    clicked = false;
   }
 
-  setTimeout(clear, 2000);
+  
+
+  setTimeout(clear, 2500);
 });
 
 // Loops for BUTTONS
