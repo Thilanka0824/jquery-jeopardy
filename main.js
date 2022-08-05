@@ -1,18 +1,14 @@
 let readJeopardyData = async () => {
   let rawJeopardyData = await fetch("jeopardy.json");
   let data = await rawJeopardyData.json();
-  //console.log(data);
-
+  
   let groupedData = _.groupBy(data, "value");
-
   return groupedData;
-  //console.log(groupedData)
+  
 };
 
-//readJeopardyData()
-
 let gridDiv = document.querySelector("#jeopardy");
-let reset = document.querySelector("#header");
+let resetButton = document.querySelector("#header");
 
 let buttonList100 = document.querySelectorAll(".btn.btn-100");
 let buttonList200 = document.querySelectorAll(".btn.btn-200");
@@ -41,19 +37,28 @@ let clear = () => {
   displayArea.innerText = "";
 };
 
+resetButton.addEventListener("click", () => {});
+
 displayScore.innerText = `Your Score: $${scoreKeeper}`;
 
 // submit button EVENT LISTENER
 submitButton.addEventListener("click", () => {
   // $100
   if (inputBox.value.toLowerCase() === questionObject1.answer.toLowerCase()) {
-    //console.log('yes!')
+    
     scoreKeeper = scoreKeeper + 100;
-    console.log(scoreKeeper);
+    
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "Good Job";
 
+    questionObject1 = { answer: "" };
     clicked = false;
+    if (scoreKeeper > 999) {
+      inputBox.value = "";
+      displayArea.innerText = "YOU'VE WON!!!";
+      displayScore.innerText = "YOU'VE BEATEN A COMPUTER";
+      clicked = true;
+    }
   }
 
   // $200
@@ -61,11 +66,19 @@ submitButton.addEventListener("click", () => {
     inputBox.value.toLowerCase() === questionObject2.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 200;
+    
     console.log(scoreKeeper);
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "Great Answer!";
 
+    questionObject2 = { answer: "" };
     clicked = false;
+    if (scoreKeeper > 999) {
+      inputBox.value = "";
+      displayArea.innerText = "YOU'VE WON!!!";
+      displayScore.innerText = "YOU'VE BEATEN A COMPUTER";
+      clicked = true;
+    }
   }
 
   // $400
@@ -73,10 +86,18 @@ submitButton.addEventListener("click", () => {
     inputBox.value.toLowerCase() === questionObject4.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 400;
+    
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "Way to go!!";
 
+    questionObject4 = { answer: "" };
     clicked = false;
+    if (scoreKeeper > 999) {
+      inputBox.value = "";
+      displayArea.innerText = "YOU'VE WON!!!";
+      displayScore.innerText = "YOU'VE BEATEN A COMPUTER";
+      clicked = true;
+    }
   }
 
   // $600
@@ -84,10 +105,18 @@ submitButton.addEventListener("click", () => {
     inputBox.value.toLowerCase() === questionObject6.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 600;
+    
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "That was a tough one!!!";
 
+    questionObject6 = { answer: "" };
     clicked = false;
+    if (scoreKeeper > 999) {
+      inputBox.value = "";
+      displayArea.innerText = "YOU'VE WON!!!";
+      displayScore.innerText = "YOU'VE BEATEN A COMPUTER";
+      clicked = true;
+    }
   }
 
   // $800
@@ -95,10 +124,18 @@ submitButton.addEventListener("click", () => {
     inputBox.value.toLowerCase() === questionObject8.answer.toLowerCase()
   ) {
     scoreKeeper = scoreKeeper + 800;
+    
     displayScore.innerText = `Your Score: $${scoreKeeper}`;
     displayArea.innerText = "OUTSTANDING!!!!!";
 
+    questionObject8 = { answer: "" };
     clicked = false;
+    if (scoreKeeper > 999) {
+      inputBox.value = "";
+      displayArea.innerText = "YOU'VE WON!!!";
+      displayScore.innerText = "YOU'VE BEATEN A COMPUTER";
+      clicked = true;
+    }
   } else {
     displayArea.innerText = "Incorrect";
 
@@ -122,13 +159,13 @@ let forLoops = async () => {
 
         target.removeEventListener("click", removeListener);
         target.style.opacity = "0.2";
-        //let blackout = button100.id
+        
         let randomNumber1 = Math.ceil(Math.random() * dataStream.$100.length);
 
         questionObject1 = dataStream.$100[randomNumber1];
         console.log(questionObject1);
         displayArea.innerText = questionObject1.question;
-        //console.log(button100.classList);
+        
 
         console.log(button100.id);
       }
